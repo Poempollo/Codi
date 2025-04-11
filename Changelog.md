@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.3.3] - 2025-04-11
+### Added
+- Added better styles 🔥
+
 ## [v0.3.2] - 2025-04-11
 ### Added
 - Added ugly style to the app. Will improve colours and structure.

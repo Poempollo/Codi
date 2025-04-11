@@ -1,35 +1,119 @@
 body {
-    background-color: #49515a;
-    font-family: Arial, sans-serif;
-}
-
-h1 {
-    color: #007bff;
+    background-color: #181825;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     max-width: 600px;
+    background-color: #222232;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    color: #ccd6ff;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+/* Input de longitud */
+#length {
+    width: 150px;
+    margin: 0 auto 20px auto;
+    display: block;
+    text-align: center;
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+    border: 1px solid #3c3f58;
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    appearance: none;
+}
+
+/* Checkbox group */
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+.form-check-input:checked {
+    background-color: #8ab4f8;
+    border-color: #8ab4f8;
+}
+
+label {
+    color: #a6accd;
+}
+
+/* Password display */
+.input-group {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 #password {
+    background-color: #1e1e2f;
+    color: #50fa7b;
+    border: 1px solid #3c3f58;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
     font-size: 1.2rem;
+    flex-grow: 1;
     text-align: center;
 }
 
-#password-strength {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #495057
-}
-
-.input-group {
-    margin-bottom: 1rem;
-}
-
 .input-group-append .btn {
-    width: 100%;
+    border: 1px solid #3c3f58;
+    background-color: #2c2c3a;
+    color: #e0e0e0;
+    border-radius: 0 10px 10px 0;
+    padding: 10px 16px;
+    font-size: 1rem;
+    height: 100%;
 }
 
-.mb-4 {
-    margin-bottom: 2rem;
+.input-group-append .btn:hover {
+    background-color: #3c3f58;
+}
+
+/* Generate button */
+#generate {
+    background-color: #8ab4f8;
+    color: #1e1e2f;
+    border: none;
+    font-weight: bold;
+    border-radius: 12px;
+    padding: 12px 20px;
+    transition: background-color 0.3s ease;
+}
+
+#generate:hover {
+    background-color: #a4c2ff;
+}
+
+/* Strength badge */
+#password-strength {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #8ab4f8;
+    background-color: #202030;
+    padding: 8px 16px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-top: 10px;
 }
