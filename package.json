@@ -19,5 +19,8 @@
   "description": "",
   "devDependencies": {
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.5"
   }
 }
