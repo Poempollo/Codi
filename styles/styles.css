@@ -6,15 +6,6 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: 600px;
-    background-color: #222232;
-    border-radius: 20px;
-    padding: 30px;
-    margin-top: 50px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
 h1 {
     color: #ccd6ff;
     font-weight: 600;
@@ -24,7 +15,7 @@ h1 {
 
 /* Input de longitud */
 #length {
-    width: 150px;
+    width: 70px;
     margin: 0 auto 20px auto;
     display: block;
     text-align: center;
@@ -77,19 +68,21 @@ label {
     text-align: center;
 }
 
-.input-group-append .btn {
+#copy {
     border: 1px solid #3c3f58;
     background-color: #2c2c3a;
     color: #e0e0e0;
+    border-left: none;
     border-radius: 0 10px 10px 0;
     padding: 10px 16px;
     font-size: 1rem;
-    height: 100%;
+    transition: background-color 0.2s ease;
 }
 
-.input-group-append .btn:hover {
+#copy:hover {
     background-color: #3c3f58;
 }
+
 
 /* Generate button */
 #generate {
@@ -116,4 +109,12 @@ label {
     border-radius: 12px;
     display: inline-block;
     margin-top: 10px;
+}
+
+.password-card {
+    background-color: #222232;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }

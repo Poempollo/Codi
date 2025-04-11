@@ -10,55 +10,49 @@
 
     </head>
     <body>
-        <div class="container mt-5">
-            <h1 class="text-center mb-4">Password Generator</h1>
-
-            <div class="row justify-content-center mb-4">
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label for="length">Length:</label>
-                        <input type="number" id="length" class="form-control" min="8" max="32" value="12"/>
+        <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+            <div class="password-card p-4">
+                <h1 class="text-center mb-4">Password Generator</h1>
+    
+                <div class="mb-3 text-center">
+                    <label for="length" class="form-label">Password length</label>
+                    <input type="number" id="length" class="form-control mx-auto" min="8" max="50" value="12" />
+                </div>
+    
+                <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                    <div class="form-check">
+                        <input type="checkbox" id="uppercase" class="form-check-input" checked />
+                        <label for="uppercase" class="form-check-label">ABC</label>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" id="uppercase" class="form-check-input" checked/>
-                        <label class="form-check-label" for="uppercase">Uppercase</label>
+                        <input type="checkbox" id="lowercase" class="form-check-input" checked />
+                        <label for="lowercase" class="form-check-label">abc</label>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" id="lowercase" class="form-check-input" checked/>
-                        <label class="form-check-label" for="lowercase">Lowercase</label>
+                        <input type="checkbox" id="numbers" class="form-check-input" checked />
+                        <label for="numbers" class="form-check-label">123</label>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" id="numbers" class="form-check-input" checked/>
-                        <label class="form-check-label" for="numbers">Numbers</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" id="symbols" class="form-check-input"/>
-                        <label class="form-check-label" for="symbols">Symbols</label>
+                        <input type="checkbox" id="symbols" class="form-check-input" />
+                        <label for="symbols" class="form-check-label">#$&</label>
                     </div>
                 </div>
-            </div>
-
-            <div class="row justify-content-center mb-4">
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" id="password" class="form-control" readonly/>
-                        <div class="input-group-append">
-                            <button id="copy" class="btn btn-outline-secondary">Copy</button>
-                        </div>
-                    </div>
+    
+                <div class="input-group mb-4">
+                    <input type="text" id="password" class="form-control" readonly />
+                    <button id="copy" class="btn btn-outline-secondary">Copy</button>
                 </div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <button id="generate" class="btn btn-primary btn-lg mb-4">Generate Password</button>
+    
+                <div class="text-center mb-3">
+                    <button id="generate" class="btn btn-primary btn-lg">Generate Password</button>
                 </div>
-            </div>
-
-            <div class="text-center mt-3">
-                <div id="password-strength" class="badge badge-info">Password Strength: </div>
+    
+                <div class="text-center">
+                    <div id="password-strength">Password Strength:</div>
+                </div>
             </div>
         </div>
+    
         <script src="script.js"></script>
-    </body>
+    </body>    
 </html>

@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.4] - 2025-04-11
+### Added
+- Improve UI completed.
+
 ## [v0.3.3] - 2025-04-11
 ### Added
 - Added better styles 🔥
