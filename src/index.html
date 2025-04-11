@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Codi Generator</title>
+        <link rel="stylesheet" href="/styles/styles.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Password Generator</h1>
+
+            <div class="controls">
+                <label>
+                    Length:
+                    <input type="number" id="length" min="8" max="32" value="12"/>
+                </label>
+                <label><input type="checkbox" id="uppercase" checked/>Uppercase</label>
+                <label><input type="checkbox" id="lowercase" checked/>Lowercase</label>
+                <label><input type="checkbox" id="numbers" checked/>Numbers</label>
+                <label><input type="checkbox" id="symbols"/>Symbols</label>
+            </div>
+            <div class="output">
+                <input type="text" id="password" readonly/>
+                <button id="copy">Copy</button>
+            </div>
+            <button id="generate">Generate Password</button>
+        </div>
+        <script src="/src/script.js"></script>
+    </body>
+</html>
