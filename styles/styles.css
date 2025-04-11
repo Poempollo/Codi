@@ -1,0 +1,35 @@
+body {
+    background-color: #49515a;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #007bff;
+}
+
+.container {
+    max-width: 600px;
+}
+
+#password {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#password-strength {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #495057
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group-append .btn {
+    width: 100%;
+}
+
+.mb-4 {
+    margin-bottom: 2rem;
+}

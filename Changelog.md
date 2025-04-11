@@ -1,6 +1,10 @@
 # Changelog
 
-## [v0.3.1] -2025-04-11
+## [v0.3.2] - 2025-04-11
+### Added
+- Added ugly style to the app. Will improve colours and structure.
+
+## [v0.3.1] - 2025-04-11
 ### Added
 - Installed Bootstrap in the project and a new "styles" branch.
 
