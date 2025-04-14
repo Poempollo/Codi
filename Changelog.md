@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.0] - 2025-04-14
+### Added
+- Initial release
+- Added license and a readme file. 
+- Reorganised structure.
+
 ## [v0.6] - 2025-04-14
 ### Added
 - Added /image folder with the app icon.
