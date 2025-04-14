@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.0.1] - 2025-04-14
+### Fixed
+- Minor fix for language issues.
+- Adjust password display color for better visual consistency.
+
 ## [v1.0] - 2025-04-14
 ### Added
 - Initial release
