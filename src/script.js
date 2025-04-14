@@ -52,9 +52,9 @@ function calculatePasswordStrength(password) {
     if (shortCriteria)
         score += 1;
     if (mediumCriteria)
-        score += 2;
-    if (largeCriteria)
         score += 3;
+    if (largeCriteria)
+        score += 5;
     if (score <= 3)
         return 'Weak';
     if (score > 3 && score <= 5)
@@ -64,7 +64,7 @@ function calculatePasswordStrength(password) {
     return 'Very Strong';
 }
 generateButton.addEventListener('click', () => {
-    const lenght = parseInt(lengthInput.value);
+    const length = parseInt(lengthInput.value);
     const useUpper = uppercaseCheckbox.checked;
     const useLower = lowercaseCheckbox.checked;
     const useNumbers = numbersCheckbox.checked;
@@ -73,7 +73,11 @@ generateButton.addEventListener('click', () => {
         alert('Please select at least one character type!');
         return;
     }
-    const password = generatePassword(lenght, useUpper, useLower, useNumbers, useSymbols);
+    if (length < 8 || length > 32) {
+        alert('Please select a valid length for the password. Must be between 8 and 32');
+        return;
+    }
+    const password = generatePassword(length, useUpper, useLower, useNumbers, useSymbols);
     passwordOutput.value = password;
     const strength = calculatePasswordStrength(password);
     passwordStrength.innerText = `Password Strength: ${strength}`;

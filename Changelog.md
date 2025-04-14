@@ -2,7 +2,11 @@
 
 ## [v0.4] - 2025-04-11
 ### Added
-- Improve UI completed.
+- UI added, more user validations, length is now verified before every generation. Improved strength logic.
+
+## [v0.3.4] - 2025-04-11
+### Added
+- Improved UI completed.
 
 ## [v0.3.3] - 2025-04-11
 ### Added
