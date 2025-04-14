@@ -1,10 +1,14 @@
 # Changelog
 
-## [v0.4] - 2025-04-11
+## [v0.5] - 2025-04-14
+### Added
+- Improved UI, strength levels now are much more visual than before.
+
+## [v0.4] - 2025-04-14
 ### Added
 - UI added, more user validations, length is now verified before every generation. Improved strength logic.
 
-## [v0.3.4] - 2025-04-11
+## [v0.3.4] - 2025-04-12
 ### Added
 - Improved UI completed.
 

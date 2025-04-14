@@ -118,3 +118,47 @@ label {
     width: 100%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
+
+.strength-weak-container {
+    box-shadow: 0 0 20px 2px #ff6b6b;
+}
+
+.strength-medium-container {
+    box-shadow: 0 0 20px 2px #f1c40f;
+}
+
+.strength-strong-container {
+    box-shadow: 0 0 20px 2px #50fa7b;
+}
+
+.strength-very-strong-container {
+    box-shadow: 0 0 20px 2px #00a372;
+}
+
+#password-strength {
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #202030;
+    padding: 8px 16px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-top: 10px;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+    color: inherit;
+}
+
+.strength-weak-text {
+    color: #ff6b6b !important;
+}
+
+.strength-medium-text {
+    color: #f1c40f !important;
+}
+
+.strength-strong-text {
+    color: #50fa7b !important;
+}
+
+.strength-very-strong-text {
+    color: #00a372 !important;
+}
