@@ -1,13 +1,30 @@
+:root {
+    --color-bg: #181825;
+    --color-panel: #222232;
+    --color-dark: #1e1e2f;
+    --color-text: #e0e0e0;
+    --color-heading: #ccd6ff;
+    --color-label: #a6accd;
+    --color-accent: #8ab4f8;
+    --color-accent-hover: #a4c2ff;
+    --color-strong: #50fa7b;
+    --color-medium: #f1c40f;
+    --color-weak: #ff6b6b;
+    --color-very-strong: #00a372;
+    --color-border: #3c3f58;
+    --color-clipboard: #2c2c3a;
+}
+
 body {
-    background-color: #181825;
-    color: #e0e0e0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
 }
 
 h1 {
-    color: #ccd6ff;
+    color: var(--color-heading);
     font-weight: 600;
     font-size: 2rem;
     letter-spacing: 1px;
@@ -19,9 +36,9 @@ h1 {
     margin: 0 auto 20px auto;
     display: block;
     text-align: center;
-    background-color: #1e1e2f;
-    color: #e0e0e0;
-    border: 1px solid #3c3f58;
+    background-color: var(--color-dark);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
     padding: 6px 10px;
     font-size: 1rem;
@@ -38,15 +55,16 @@ h1 {
 
 .form-check-input {
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .form-check-input:checked {
-    background-color: #8ab4f8;
-    border-color: #8ab4f8;
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
 }
 
 label {
-    color: #a6accd;
+    color: var(--color-label);
 }
 
 /* Password display */
@@ -57,84 +75,51 @@ label {
 }
 
 #password {
-    background-color: #1e1e2f;
-    color: #50fa7b;
-    border: 1px solid #3c3f58;
+    background-color: var(--color-dark);
+    color: var(--color-strong);
+    border: 1px solid var(--color-border);
     border-right: none;
     border-radius: 10px 0 0 10px;
     padding: 10px;
     font-size: 1.2rem;
     flex-grow: 1;
     text-align: center;
+    box-shadow: 0 0 5px rgba(80, 250, 123, 0.3);
 }
 
 #copy {
-    border: 1px solid #3c3f58;
-    background-color: #2c2c3a;
-    color: #e0e0e0;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-clipboard);
+    color: var(--color-text);
     border-left: none;
     border-radius: 0 10px 10px 0;
     padding: 10px 16px;
     font-size: 1rem;
     transition: background-color 0.2s ease;
+    cursor: pointer;
 }
 
 #copy:hover {
-    background-color: #3c3f58;
+    background-color: var(--color-border);
 }
-
 
 /* Generate button */
 #generate {
-    background-color: #8ab4f8;
-    color: #1e1e2f;
+    background-color: var(--color-accent);
+    color: var(--color-dark);
     border: none;
     font-weight: bold;
     border-radius: 12px;
     padding: 12px 20px;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 #generate:hover {
-    background-color: #a4c2ff;
+    background-color: var(--color-accent-hover);
 }
 
 /* Strength badge */
-#password-strength {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #8ab4f8;
-    background-color: #202030;
-    padding: 8px 16px;
-    border-radius: 12px;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.password-card {
-    background-color: #222232;
-    border-radius: 20px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-.strength-weak-container {
-    box-shadow: 0 0 20px 2px #ff6b6b;
-}
-
-.strength-medium-container {
-    box-shadow: 0 0 20px 2px #f1c40f;
-}
-
-.strength-strong-container {
-    box-shadow: 0 0 20px 2px #50fa7b;
-}
-
-.strength-very-strong-container {
-    box-shadow: 0 0 20px 2px #00a372;
-}
-
 #password-strength {
     font-size: 1rem;
     font-weight: 500;
@@ -147,18 +132,44 @@ label {
     color: inherit;
 }
 
+.password-card {
+    background-color: var(--color-panel);
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Strength visual effects */
+.strength-weak-container {
+    box-shadow: 0 0 20px 2px var(--color-weak);
+}
+
+.strength-medium-container {
+    box-shadow: 0 0 20px 2px var(--color-medium);
+}
+
+.strength-strong-container {
+    box-shadow: 0 0 20px 2px var(--color-strong);
+}
+
+.strength-very-strong-container {
+    box-shadow: 0 0 20px 2px var(--color-very-strong);
+}
+
 .strength-weak-text {
-    color: #ff6b6b !important;
+    color: var(--color-weak) !important;
 }
 
 .strength-medium-text {
-    color: #f1c40f !important;
+    color: var(--color-medium) !important;
 }
 
 .strength-strong-text {
-    color: #50fa7b !important;
+    color: var(--color-strong) !important;
 }
 
 .strength-very-strong-text {
-    color: #00a372 !important;
+    color: var(--color-very-strong) !important;
 }

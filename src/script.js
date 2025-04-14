@@ -1,5 +1,4 @@
 "use strict";
-// npx tsc al guardar
 const lengthInput = document.getElementById('length');
 const uppercaseCheckbox = document.getElementById('uppercase');
 const lowercaseCheckbox = document.getElementById('lowercase');
@@ -8,23 +7,24 @@ const symbolsCheckbox = document.getElementById('symbols');
 const passwordOutput = document.getElementById('password');
 const generateButton = document.getElementById('generate');
 const copyButton = document.getElementById('copy');
-const passwordStrength = document.getElementById('password-strength');
-const appContainer = document.getElementById('app-container');
 const strengthDisplay = document.getElementById('password-strength');
+const appContainer = document.getElementById('app-container');
+const CHARS = {
+    uppers: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    lowers: 'abcdefghijklmnopqrstuvwxyz',
+    numbers: '0123456789',
+    symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?',
+};
 function generatePassword(length, useUpper, useLower, useNumbers, useSymbols) {
-    const uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const lowers = 'abcdefghijklmnopqrstuvwxyz';
-    const numbers = '0123456789';
-    const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
     let characters = '';
     if (useUpper)
-        characters += uppers;
+        characters += CHARS.uppers;
     if (useLower)
-        characters += lowers;
+        characters += CHARS.lowers;
     if (useNumbers)
-        characters += numbers;
+        characters += CHARS.numbers;
     if (useSymbols)
-        characters += symbols;
+        characters += CHARS.symbols;
     if (!characters)
         return '';
     let password = '';
@@ -35,61 +35,40 @@ function generatePassword(length, useUpper, useLower, useNumbers, useSymbols) {
     return password;
 }
 function calculatePasswordStrength(password) {
-    const upperCriteria = /[A-Z]/.test(password);
-    const lowerCriteria = /[a-z]/.test(password);
-    const numberCriteria = /\d/.test(password);
-    const symbolCriteria = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
-    const shortCriteria = password.length < 12;
-    const mediumCriteria = password.length >= 12 && password.length < 24;
-    const largeCriteria = password.length >= 24;
+    const hasUpper = /[A-Z]/.test(password);
+    const hasLower = /[a-z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
+    const length = password.length;
     let score = 0;
-    if (upperCriteria)
+    if (hasUpper)
         score += 1;
-    if (lowerCriteria)
+    if (hasLower)
         score += 1;
-    if (numberCriteria)
+    if (hasNumber)
         score += 1;
-    if (symbolCriteria)
+    if (hasSymbol)
         score += 2;
-    if (shortCriteria)
+    if (length < 12)
         score += 1;
-    if (mediumCriteria)
+    else if (length < 24)
         score += 3;
-    if (largeCriteria)
+    else
         score += 5;
     if (score <= 3)
-        return 'Weak';
-    if (score > 3 && score <= 5)
-        return 'Medium';
-    if (score > 5 && score <= 7)
-        return 'Strong';
-    return 'Very Strong';
+        return 'weak';
+    if (score <= 5)
+        return 'medium';
+    if (score <= 7)
+        return 'strong';
+    return 'very-strong';
 }
 function updateStrengthDisplay(strength) {
-    appContainer.classList.remove('strength-weak-container', 'strength-medium-container', 'strength-strong-container', 'strength-very-strong-container');
-    strengthDisplay.classList.remove('strength-weak-text', 'strength-medium-text', 'strength-strong-text', 'strength-very-strong-text');
-    switch (strength) {
-        case 'weak':
-            strengthDisplay.textContent = 'Password Strength: Weak';
-            appContainer.classList.add('strength-weak-container');
-            strengthDisplay.classList.add('strength-weak-text');
-            break;
-        case 'medium':
-            strengthDisplay.textContent = 'Password Strength: Medium';
-            appContainer.classList.add('strength-medium-container');
-            strengthDisplay.classList.add('strength-medium-text');
-            break;
-        case 'strong':
-            strengthDisplay.textContent = 'Password Strength: Strong';
-            appContainer.classList.add('strength-strong-container');
-            strengthDisplay.classList.add('strength-strong-text');
-            break;
-        case 'very-strong':
-            strengthDisplay.textContent = 'Password Strength: Very Strong';
-            appContainer.classList.add('strength-very-strong-container');
-            strengthDisplay.classList.add('strength-very-strong-text');
-            break;
-    }
+    appContainer.className = 'password-card p-4';
+    strengthDisplay.className = '';
+    strengthDisplay.textContent = `Password Strength: ${strength.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}`;
+    appContainer.classList.add(`strength-${strength}-container`);
+    strengthDisplay.classList.add(`strength-${strength}-text`);
 }
 generateButton.addEventListener('click', () => {
     const length = parseInt(lengthInput.value);
@@ -97,34 +76,21 @@ generateButton.addEventListener('click', () => {
     const useLower = lowercaseCheckbox.checked;
     const useNumbers = numbersCheckbox.checked;
     const useSymbols = symbolsCheckbox.checked;
-    if (!useUpper && !useLower && !useNumbers && !useSymbols) {
+    if (!(useUpper || useLower || useNumbers || useSymbols)) {
         alert('Please select at least one character type!');
         return;
     }
     if (length < 8 || length > 32) {
-        alert('Please select a valid length for the password. Must be between 8 and 32');
+        alert('Please select a valid length between 8 and 32.');
         return;
     }
     const password = generatePassword(length, useUpper, useLower, useNumbers, useSymbols);
     passwordOutput.value = password;
     const strength = calculatePasswordStrength(password);
-    switch (strength) {
-        case 'Weak':
-            updateStrengthDisplay('weak');
-            break;
-        case 'Medium':
-            updateStrengthDisplay('medium');
-            break;
-        case 'Strong':
-            updateStrengthDisplay('strong');
-            break;
-        case 'Very Strong':
-            updateStrengthDisplay('very-strong');
-            break;
-    }
-    passwordStrength.innerText = `Password Strength: ${strength}`;
+    updateStrengthDisplay(strength);
 });
 copyButton.addEventListener('click', () => {
-    passwordOutput.select();
-    document.execCommand('copy');
+    navigator.clipboard.writeText(passwordOutput.value)
+        .then(() => console.log('Password copied'))
+        .catch(err => console.error('Copy failed', err));
 });
