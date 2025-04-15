@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.1] - 2025-04-15
+## Added
+- Users can now edit the generated password in real time.
+- Improved password strength evaluation logic.
+- New stable version released.
+
 ## [v1.0.3] - 2025-04-15
 ## Added
 - Much better password strength logic. New measuring system.
