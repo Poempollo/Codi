@@ -39,27 +39,25 @@ function calculatePasswordStrength(password) {
     const hasLower = /[a-z]/.test(password);
     const hasNumber = /\d/.test(password);
     const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
+    const typesCount = [hasUpper, hasLower, hasNumber, hasSymbol].filter(Boolean).length;
     const length = password.length;
     let score = 0;
-    if (hasUpper)
+    score += typesCount * 2;
+    if (length >= 8 && length < 12)
         score += 1;
-    if (hasLower)
-        score += 1;
-    if (hasNumber)
-        score += 1;
-    if (hasSymbol)
+    else if (length >= 12 && length < 16)
         score += 2;
-    if (length < 12)
-        score += 1;
-    else if (length < 24)
+    else if (length >= 16 && length < 20)
         score += 3;
-    else
+    else if (length >= 20 && length < 26)
+        score += 4;
+    else if (length >= 26)
         score += 5;
-    if (score <= 3)
-        return 'weak';
     if (score <= 5)
+        return 'weak';
+    if (score <= 9)
         return 'medium';
-    if (score <= 7)
+    if (score <= 11)
         return 'strong';
     return 'very-strong';
 }

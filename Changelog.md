@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.3] - 2025-04-15
+## Added
+- Much better password strength logic. New measuring system.
+
 ## [v1.0.2] - 2025-04-15
 ## Added
 - Passwords now can be modified by the user.
