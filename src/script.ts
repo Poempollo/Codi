@@ -21,21 +21,45 @@ const CHARS = {
 type StrengthLevel = 'weak' | 'medium' | 'strong' | 'very-strong';
 
 function generatePassword(length: number, useUpper: boolean, useLower: boolean, useNumbers: boolean, useSymbols: boolean): string {
-    let characters = '';
-    if (useUpper) characters += CHARS.uppers;
-    if (useLower) characters += CHARS.lowers;
-    if (useNumbers) characters += CHARS.numbers;
-    if (useSymbols) characters += CHARS.symbols;
+    let availableChars = '';
+    const mandatoryChars: string[] = [];
 
-    if (!characters) return '';
-
-    let password = '';
-    for (let i = 0; i < length; i++) {
-        const randIndex = getRandomInt(characters.length);
-        password += characters[randIndex];
+    if (useUpper) {
+        availableChars += CHARS.uppers;
+        mandatoryChars.push(randomChar(CHARS.uppers));
+    }
+    if (useLower) {
+        availableChars += CHARS.lowers;
+        mandatoryChars.push(randomChar(CHARS.lowers));
+    }
+    if (useNumbers) {
+        availableChars += CHARS.numbers;
+        mandatoryChars.push(randomChar(CHARS.numbers));
+    }
+    if (useSymbols) {
+        availableChars += CHARS.symbols;
+        mandatoryChars.push(randomChar(CHARS.symbols));
     }
 
-    return password;
+    if (!availableChars) return '';
+
+    const remainingLength = length - mandatoryChars.length;
+    const passwordChars = [...mandatoryChars];
+
+    for (let i = 0; i < remainingLength; i++) {
+        passwordChars.push(randomChar(availableChars));
+    }
+
+    for (let i = passwordChars.length - 1; i > 0; i--) {
+        const j = getRandomInt(i + 1);
+        [passwordChars[i], passwordChars[j]] = [passwordChars[j], passwordChars[i]];
+    }
+
+    return passwordChars.join('');
+}
+
+function randomChar(charSet: string): string {
+    return charSet[getRandomInt(charSet.length)];
 }
 
 function getRandomInt(max: number): number {

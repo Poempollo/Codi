@@ -18,23 +18,39 @@ const CHARS = {
     symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?',
 };
 function generatePassword(length, useUpper, useLower, useNumbers, useSymbols) {
-    let characters = '';
-    if (useUpper)
-        characters += CHARS.uppers;
-    if (useLower)
-        characters += CHARS.lowers;
-    if (useNumbers)
-        characters += CHARS.numbers;
-    if (useSymbols)
-        characters += CHARS.symbols;
-    if (!characters)
-        return '';
-    let password = '';
-    for (let i = 0; i < length; i++) {
-        const randIndex = getRandomInt(characters.length);
-        password += characters[randIndex];
+    let availableChars = '';
+    const mandatoryChars = [];
+    if (useUpper) {
+        availableChars += CHARS.uppers;
+        mandatoryChars.push(randomChar(CHARS.uppers));
     }
-    return password;
+    if (useLower) {
+        availableChars += CHARS.lowers;
+        mandatoryChars.push(randomChar(CHARS.lowers));
+    }
+    if (useNumbers) {
+        availableChars += CHARS.numbers;
+        mandatoryChars.push(randomChar(CHARS.numbers));
+    }
+    if (useSymbols) {
+        availableChars += CHARS.symbols;
+        mandatoryChars.push(randomChar(CHARS.symbols));
+    }
+    if (!availableChars)
+        return '';
+    const remainingLength = length - mandatoryChars.length;
+    const passwordChars = [...mandatoryChars];
+    for (let i = 0; i < remainingLength; i++) {
+        passwordChars.push(randomChar(availableChars));
+    }
+    for (let i = passwordChars.length - 1; i > 0; i--) {
+        const j = getRandomInt(i + 1);
+        [passwordChars[i], passwordChars[j]] = [passwordChars[j], passwordChars[i]];
+    }
+    return passwordChars.join('');
+}
+function randomChar(charSet) {
+    return charSet[getRandomInt(charSet.length)];
 }
 function getRandomInt(max) {
     const array = new Uint32Array(1);

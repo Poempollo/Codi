@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.1.3] - 2025-04-15
+## Added
+- Improved generation system. Now passwords must have at least one character from the user's selection.
+
 ## [v1.1.2] - 2025-04-15
 ## Added
 - Export button added for a .txt file with the passworfd info.
