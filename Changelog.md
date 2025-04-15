@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.1.4] - 2025-04-15
+## Fixed
+- The history scrollbar now is hidden.
+
 ## [v1.1.3] - 2025-04-15
 ## Added
 - Improved generation system. Now passwords must have at least one character from the user's selection.

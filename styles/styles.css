@@ -199,3 +199,13 @@ label {
     font-weight: bold;
     margin-left: 10px;
 }
+
+#password-history {
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  #password-history::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+  
