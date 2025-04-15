@@ -98,3 +98,9 @@ copyButton.addEventListener('click', () => {
         .then(() => console.log('Password copied'))
         .catch(err => console.error('Copy failed', err));
 });
+
+passwordOutput.addEventListener('input', () => {
+    const password = passwordOutput.value;
+    const strength = calculatePasswordStrength(password);
+    updateStrengthDisplay(strength);
+});

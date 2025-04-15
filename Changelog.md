@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.0.2] - 2025-04-15
+## Added
+- Passwords now can be modified by the user.
+- Password strength updates in real time.
+
 ## [v1.0.1] - 2025-04-14
 ### Fixed
 - Minor fix for language issues.
