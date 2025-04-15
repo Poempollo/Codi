@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.1.1] - 2025-04-15
+## Added
+- New password history for the last 10 passwords generated.
+
 ## [v1.1] - 2025-04-15
 ## Added
 - Users can now edit the generated password in real time.

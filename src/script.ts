@@ -8,6 +8,8 @@ const generateButton = document.getElementById('generate') as HTMLButtonElement;
 const copyButton = document.getElementById('copy') as HTMLButtonElement;
 const strengthDisplay = document.getElementById('password-strength') as HTMLDivElement;
 const appContainer = document.getElementById('app-container') as HTMLElement;
+const passwordHistoryList = document.getElementById('password-history') as HTMLUListElement;
+const passwordInput = document.getElementById('password') as HTMLInputElement;
 
 const CHARS = {
     uppers: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -92,6 +94,8 @@ generateButton.addEventListener('click', () => {
 
     const strength = calculatePasswordStrength(password);
     updateStrengthDisplay(strength);
+
+    addPasswordToHistory(password, strengthDisplay.textContent?.split(': ')[1] ?? '');
 });
 
 copyButton.addEventListener('click', () => {
@@ -105,3 +109,57 @@ passwordOutput.addEventListener('input', () => {
     const strength = calculatePasswordStrength(password);
     updateStrengthDisplay(strength);
 });
+
+interface HistoryItem {
+    value: string;
+    strength: string;
+}
+
+let passwordHistory: HistoryItem[] = [];
+
+function addPasswordToHistory(password: string, strength: string) {
+    passwordHistory.unshift({value: password, strength});
+    if (passwordHistory.length > 10) {
+        passwordHistory.pop();
+    }
+
+    renderPasswordHistory();
+}
+
+function renderPasswordHistory() {
+    passwordHistoryList.innerHTML = '';
+    passwordHistory.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.value;
+
+        const strengthSpan = document.createElement('span');
+        strengthSpan.classList.add('password-strength-label');
+
+        switch(item.strength) {
+            case 'Very Strong':
+                strengthSpan.textContent = 'Very strong'
+                strengthSpan.classList.add('strength-very-strong-text');
+                break;
+            case 'Strong':
+                strengthSpan.textContent = 'Strong'
+                strengthSpan.classList.add('strength-strong-text');
+                break;
+            case 'Medium':
+                strengthSpan.textContent = 'Medium'
+                strengthSpan.classList.add('strength-medium-text');
+                break;
+            case 'Weak':
+                strengthSpan.textContent = 'Weak'
+                strengthSpan.classList.add('strength-weak-text');
+                break;
+        }
+
+        li.appendChild(strengthSpan);
+
+        li.addEventListener('click', () => {
+            passwordInput.value = item.value;
+        });
+
+        passwordHistoryList.appendChild(li);
+    })
+}

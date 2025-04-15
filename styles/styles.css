@@ -173,3 +173,29 @@ label {
 .strength-very-strong-text {
     color: var(--color-very-strong) !important;
 }
+
+#password-history{
+    max-height: 200px;
+    overflow-y: auto;
+    padding-left: 0;
+}
+
+#password-history li {
+    background-color: var(--color-dark);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#password-history li:hover {
+    background-color: var(--color-clipboard);
+}
+
+.password-strength-label{
+    font-weight: bold;
+    margin-left: 10px;
+}
