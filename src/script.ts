@@ -9,7 +9,7 @@ const copyButton = document.getElementById('copy') as HTMLButtonElement;
 const strengthDisplay = document.getElementById('password-strength') as HTMLDivElement;
 const appContainer = document.getElementById('app-container') as HTMLElement;
 const passwordHistoryList = document.getElementById('password-history') as HTMLUListElement;
-const passwordInput = document.getElementById('password') as HTMLInputElement;
+const exportButton = document.getElementById('export') as HTMLButtonElement;
 
 const CHARS = {
     uppers: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -31,11 +31,17 @@ function generatePassword(length: number, useUpper: boolean, useLower: boolean, 
 
     let password = '';
     for (let i = 0; i < length; i++) {
-        const randIndex = Math.floor(Math.random() * characters.length);
+        const randIndex = getRandomInt(characters.length);
         password += characters[randIndex];
     }
 
     return password;
+}
+
+function getRandomInt(max: number): number {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0] % max;
 }
 
 function calculatePasswordStrength(password: string): StrengthLevel {
@@ -157,9 +163,34 @@ function renderPasswordHistory() {
         li.appendChild(strengthSpan);
 
         li.addEventListener('click', () => {
-            passwordInput.value = item.value;
+            passwordOutput.value = item.value;
         });
 
         passwordHistoryList.appendChild(li);
     })
 }
+
+exportButton.addEventListener('click', () => {
+    const password = passwordOutput.value;
+
+    if(!password){
+        alert("There are no password to export, please, generate one first");
+        return;
+    }
+
+    const strength = strengthDisplay.textContent?.split(': ')[1] ?? 'Unknown';
+    const now = new Date();
+    const formattedDate = now.toLocaleString();
+
+    const fileContent = `Password: ${password}\nStrength: ${strength}\nDate: ${formattedDate}`;
+
+    const blob = new Blob([fileContent], {type: "text/plain"});
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "codi_password.txt";
+    a.click();
+
+    URL.revokeObjectURL(url);
+});

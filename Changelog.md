@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.1.2] - 2025-04-15
+## Added
+- Export button added for a .txt file with the passworfd info.
+- Better generation system, with cryptographic method.
+
 ## [v1.1.1] - 2025-04-15
 ## Added
 - New password history for the last 10 passwords generated.
