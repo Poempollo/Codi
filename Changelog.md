@@ -1,5 +1,13 @@
 # Changelog
 
+# Mayor Update
+## [v1.2] - 2025-04-15
+## Added
+- Improved password generation.
+- Added cryptography for passwords generation.
+- Added history for the last 10 passwords generated.
+- Added an export button for the generated password.
+
 ## [v1.1.4] - 2025-04-15
 ## Fixed
 - The history scrollbar now is hidden.
@@ -17,6 +25,7 @@
 ## Added
 - New password history for the last 10 passwords generated.
 
+# Mayor Update
 ## [v1.1] - 2025-04-15
 ## Added
 - Users can now edit the generated password in real time.
@@ -37,6 +46,7 @@
 - Minor fix for language issues.
 - Adjust password display color for better visual consistency.
 
+# Release
 ## [v1.0] - 2025-04-14
 ### Added
 - Initial release
