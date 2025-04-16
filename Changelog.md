@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.6] - 2025-04-16
+## Fixed
+- Fixed even more languages issues with strength levels.
+
 ## [v1.2.5] - 2025-04-16
 ## Fixed
 - Fixed various languages issues with alerts.
