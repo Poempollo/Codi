@@ -1,5 +1,14 @@
 # Changelog
 
+# Mayor Update
+## [v1.3] - 2025-04-16
+## Added
+- Day/Night theme.
+- Spanish language.
+- Better contrast and readability.
+## Fixed
+- Fixed some UI and languages issues.
+
 ## [v1.2.7] - 2025-04-16
 ## Fixed
 - Fixed more languages issues with strength levels. I hope now it's okay because this is killing me.
