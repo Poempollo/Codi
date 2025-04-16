@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.7] - 2025-04-16
+## Fixed
+- Fixed more languages issues with strength levels. I hope now it's okay because this is killing me.
+
 ## [v1.2.6] - 2025-04-16
 ## Fixed
 - Fixed even more languages issues with strength levels.
