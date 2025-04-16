@@ -14,6 +14,23 @@
     --color-border: #3c3f58;
     --color-clipboard: #2c2c3a;
 }
+.light-mode {
+    --color-bg: #e7ecf1;        
+    --color-panel: #f1f4f8;         
+    --color-dark: #cbd3dc;    
+    --color-text: #1e1e1e;
+    --color-heading: #2b2b2b;
+    --color-label: #555555;
+    --color-accent: #007bff;
+    --color-accent-hover: #0056b3;
+    --color-very-strong: #00795c;
+    --color-strong: #3ca86b;    
+    --color-medium: #e0a800;
+    --color-weak: #c43b3b;
+    --color-border: #b0b7c1;
+    --color-clipboard: #d6dbe2;
+}
+
 
 body {
     background-color: var(--color-bg);
@@ -63,6 +80,10 @@ h1 {
     border-color: var(--color-accent);
 }
 
+.light-mode .form-check-input {
+    border: 1px solid var(--color-border);
+}
+
 label {
     color: var(--color-label);
 }
@@ -105,7 +126,7 @@ label {
 
 #copy.copied {
     background-color: var(--color-accent);
-    transform: scale(1.1);
+    color: var(--color-dark);
 }
 
 #copy.copied:active {
@@ -132,13 +153,17 @@ label {
 #password-strength {
     font-size: 1rem;
     font-weight: 500;
-    background-color: #202030;
+    background-color: (var(--color-dark));
     padding: 8px 16px;
     border-radius: 12px;
     display: inline-block;
     margin-top: 10px;
     transition: box-shadow 0.3s ease, color 0.3s ease;
     color: inherit;
+}
+
+#password:focus {
+    outline: none;;
 }
 
 .password-card {
@@ -212,9 +237,27 @@ label {
 #password-history {
     overflow-y: auto;
     scrollbar-width: none; /* Firefox */
-  }
+}
   
-  #password-history::-webkit-scrollbar {
+#password-history::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Edge */
-  }
-  
+}
+
+#toggle-mode {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#toggle-mode:hover {
+    transform: scale(1.2);
+    color: var(--color-accent);
+}
+
+.light-mode #export {
+    color: var(--color-text);
+    background-color: var(--color-border);
+}

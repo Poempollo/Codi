@@ -11,6 +11,7 @@ const strengthDisplay = document.getElementById('password-strength');
 const appContainer = document.getElementById('app-container');
 const passwordHistoryList = document.getElementById('password-history');
 const exportButton = document.getElementById('export');
+const toggleButton = document.getElementById('toggle-mode');
 const CHARS = {
     uppers: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     lowers: 'abcdefghijklmnopqrstuvwxyz',
@@ -186,4 +187,12 @@ exportButton.addEventListener('click', () => {
     a.download = "codi_password.txt";
     a.click();
     URL.revokeObjectURL(url);
+});
+let darkMode = true;
+toggleButton.textContent = darkMode ? "☼" : "☾";
+toggleButton.addEventListener('click', () => {
+    darkMode = !darkMode;
+    0;
+    document.body.classList.toggle('light-mode', !darkMode);
+    toggleButton.textContent = darkMode ? "☼" : "☾";
 });

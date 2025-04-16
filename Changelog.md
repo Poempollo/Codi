@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.2.2] - 2025-04-16
+## Added
+- New theme, light mode with soft tones for a more polished and brighter look.
+## Fixed
+- Minor UI improvements for better contrast and readability.
+
 ## [v1.2.1] - 2025-04-16
 ## Added
 - Copy button now have an animation. 

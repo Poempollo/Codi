@@ -10,6 +10,7 @@ const strengthDisplay = document.getElementById('password-strength') as HTMLDivE
 const appContainer = document.getElementById('app-container') as HTMLElement;
 const passwordHistoryList = document.getElementById('password-history') as HTMLUListElement;
 const exportButton = document.getElementById('export') as HTMLButtonElement;
+const toggleButton = document.getElementById('toggle-mode') as HTMLButtonElement;
 
 const CHARS = {
     uppers: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -223,4 +224,15 @@ exportButton.addEventListener('click', () => {
     a.click();
 
     URL.revokeObjectURL(url);
+});
+
+let darkMode = true;
+toggleButton.textContent = darkMode ? "☼" : "☾";
+
+toggleButton.addEventListener('click', () => {
+    darkMode = !darkMode;0
+
+    document.body.classList.toggle('light-mode', !darkMode);
+
+    toggleButton.textContent = darkMode ? "☼" : "☾";
 });
