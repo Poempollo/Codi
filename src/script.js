@@ -12,9 +12,19 @@ const appContainer = document.getElementById('app-container');
 const passwordHistoryList = document.getElementById('password-history');
 const exportButton = document.getElementById('export');
 const toggleButton = document.getElementById('toggle-mode');
-const browserLang = navigator.language.slice(0, 2);
-const supportedLangs = ['en', 'es'];
-const currentLang = supportedLangs.includes(browserLang) ? browserLang : 'en';
+const browserLang = navigator.language.toUpperCase();
+const languageMapping = {
+    'EN': 'en',
+    'GB': 'en',
+    'CA': 'en',
+    'US': 'en',
+    'ES': 'es',
+    'MX': 'es',
+    'AR': 'es',
+    'CL': 'es',
+};
+const browserLangShort = browserLang.slice(0, 2);
+const currentLang = languageMapping[browserLangShort] || 'EN';
 const CHARS = {
     uppers: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     lowers: 'abcdefghijklmnopqrstuvwxyz',
@@ -103,11 +113,11 @@ generateButton.addEventListener('click', () => {
     const useNumbers = numbersCheckbox.checked;
     const useSymbols = symbolsCheckbox.checked;
     if (!(useUpper || useLower || useNumbers || useSymbols)) {
-        alert('Please select at least one character type!');
+        alert(langData.alerts.no_type);
         return;
     }
     if (length < 8 || length > 32) {
-        alert('Please select a valid length between 8 and 32.');
+        alert(langData.alerts.invalid_length);
         return;
     }
     const password = generatePassword(length, useUpper, useLower, useNumbers, useSymbols);
@@ -149,19 +159,19 @@ function renderPasswordHistory() {
         strengthSpan.classList.add('password-strength-label');
         switch (item.strength) {
             case 'Very Strong':
-                strengthSpan.textContent = 'Very strong';
+                strengthSpan.textContent = langData.strength_levels.very_strong;
                 strengthSpan.classList.add('strength-very-strong-text');
                 break;
             case 'Strong':
-                strengthSpan.textContent = 'Strong';
+                strengthSpan.textContent = langData.strength_levels.strong;
                 strengthSpan.classList.add('strength-strong-text');
                 break;
             case 'Medium':
-                strengthSpan.textContent = 'Medium';
+                strengthSpan.textContent = langData.strength_levels.medium;
                 strengthSpan.classList.add('strength-medium-text');
                 break;
             case 'Weak':
-                strengthSpan.textContent = 'Weak';
+                strengthSpan.textContent = langData.strength_levels.weak;
                 strengthSpan.classList.add('strength-weak-text');
                 break;
         }
@@ -176,7 +186,7 @@ exportButton.addEventListener('click', () => {
     var _a, _b;
     const password = passwordOutput.value;
     if (!password) {
-        alert("There are no password to export, please, generate one first");
+        alert(langData.alerts.no_password);
         return;
     }
     const strength = (_b = (_a = strengthDisplay.textContent) === null || _a === void 0 ? void 0 : _a.split(': ')[1]) !== null && _b !== void 0 ? _b : 'Unknown';
@@ -195,7 +205,6 @@ let darkMode = true;
 toggleButton.textContent = darkMode ? "☼" : "☾";
 toggleButton.addEventListener('click', () => {
     darkMode = !darkMode;
-    0;
     document.body.classList.toggle('light-mode', !darkMode);
     toggleButton.textContent = darkMode ? "☼" : "☾";
 });
@@ -213,8 +222,10 @@ function updateText(langData) {
     const toggleButton = document.getElementById('toggle-mode');
     toggleButton.title = langData.toggle_mode;
 }
+let langData;
 function init() {
-    loadLanguage(currentLang).then(langData => {
+    loadLanguage(currentLang).then(data => {
+        langData = data;
         updateText(langData);
     }).catch(err => console.error('Error loading language:', err));
 }

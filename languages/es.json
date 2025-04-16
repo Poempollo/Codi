@@ -7,5 +7,16 @@
     "password_generator": "Generador de Contraseñas",
     "password_history": "Historial de Contraseñas",
     "change_theme": "Cambiar tema",
-    "toggle_mode": "Tema día/noche"
+    "toggle_mode": "Tema día/noche",
+    "alerts": {
+        "no_type": "Porfavor, selecciona al menos un tipo de carácter!",
+        "invalid_length": "La contraseña debe tener entre 8 y 32 caracteres!",
+        "no_password": "Porfavor, genera una contraseña primero!"
+    },
+    "strength_levels": {
+        "weak": "Débil",
+        "medium": "Media",
+        "strong": "Fuerte",
+        "very_strong": "Muy Fuerte"
+    }
 }

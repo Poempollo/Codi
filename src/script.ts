@@ -126,12 +126,12 @@ generateButton.addEventListener('click', () => {
     const useSymbols = symbolsCheckbox.checked;
 
     if (!(useUpper || useLower || useNumbers || useSymbols)) {
-        alert('Please select at least one character type!');
+        alert(langData.alerts.no_type);
         return;
     }
 
     if (length < 8 || length > 32) {
-        alert('Please select a valid length between 8 and 32.');
+        alert(langData.alerts.invalid_length);
         return;
     }
 
@@ -189,19 +189,19 @@ function renderPasswordHistory() {
 
         switch(item.strength) {
             case 'Very Strong':
-                strengthSpan.textContent = 'Very strong'
+                strengthSpan.textContent = langData.strength_levels.very_strong;
                 strengthSpan.classList.add('strength-very-strong-text');
                 break;
             case 'Strong':
-                strengthSpan.textContent = 'Strong'
+                strengthSpan.textContent = langData.strength_levels.strong;
                 strengthSpan.classList.add('strength-strong-text');
                 break;
             case 'Medium':
-                strengthSpan.textContent = 'Medium'
+                strengthSpan.textContent = langData.strength_levels.medium;
                 strengthSpan.classList.add('strength-medium-text');
                 break;
             case 'Weak':
-                strengthSpan.textContent = 'Weak'
+                strengthSpan.textContent = langData.strength_levels.weak;
                 strengthSpan.classList.add('strength-weak-text');
                 break;
         }
@@ -220,7 +220,7 @@ exportButton.addEventListener('click', () => {
     const password = passwordOutput.value;
 
     if(!password){
-        alert("There are no password to export, please, generate one first");
+        alert(langData.alerts.no_password);
         return;
     }
 
@@ -268,8 +268,11 @@ function updateText(langData: any) {
     toggleButton.title = langData.toggle_mode;
 }
 
+let langData: any;
+
 function init() {
-    loadLanguage(currentLang).then(langData => {
+    loadLanguage(currentLang).then(data => {
+        langData = data;
         updateText(langData);
     }).catch(err => console.error('Error loading language:', err));
 }
