@@ -95,12 +95,21 @@ label {
     border-radius: 0 10px 10px 0;
     padding: 10px 16px;
     font-size: 1rem;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
     cursor: pointer;
 }
 
 #copy:hover {
     background-color: var(--color-border);
+}
+
+#copy.copied {
+    background-color: var(--color-accent);
+    transform: scale(1.1);
+}
+
+#copy.copied:active {
+    transform: scale(1);
 }
 
 /* Generate button */

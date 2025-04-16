@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.1] - 2025-04-16
+## Added
+- Copy button now have an animation. 
+
 # Mayor Update
 ## [v1.2] - 2025-04-15
 ## Added

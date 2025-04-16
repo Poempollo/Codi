@@ -114,7 +114,13 @@ generateButton.addEventListener('click', () => {
 });
 copyButton.addEventListener('click', () => {
     navigator.clipboard.writeText(passwordOutput.value)
-        .then(() => console.log('Password copied'))
+        .then(() => {
+        console.log('Password copied');
+        copyButton.classList.add('copied');
+        setTimeout(() => {
+            copyButton.classList.remove('copied');
+        }, 1000);
+    })
         .catch(err => console.error('Copy failed', err));
 });
 passwordOutput.addEventListener('input', () => {
