@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.4] - 2025-04-16
+## Fixed
+- Fixed various languages compatibilities with some browsers.
+
 ## [v1.2.3] - 2025-04-16
 ## Added
 - Now languages are loaded following the browser configuration. For now, english and spanish available.

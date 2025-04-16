@@ -11,9 +11,21 @@ const appContainer = document.getElementById('app-container') as HTMLElement;
 const passwordHistoryList = document.getElementById('password-history') as HTMLUListElement;
 const exportButton = document.getElementById('export') as HTMLButtonElement;
 const toggleButton = document.getElementById('toggle-mode') as HTMLButtonElement;
-const browserLang = navigator.language.slice(0, 2);
-const supportedLangs = ['en', 'es'];
-const currentLang = supportedLangs.includes(browserLang) ? browserLang : 'en';
+const browserLang = navigator.language.toUpperCase();
+const languageMapping: Record<string, string> = {
+    'EN': 'en',
+    'GB': 'en',
+    'CA': 'en',
+    'US': 'en',
+    'ES': 'es',
+    'MX': 'es',
+    'AR': 'es',
+    'CL': 'es',
+}
+
+const browserLangShort = browserLang.slice(0, 2);
+
+const currentLang = languageMapping[browserLangShort] || 'EN';
 
 const CHARS = {
     uppers: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -233,7 +245,7 @@ let darkMode = true;
 toggleButton.textContent = darkMode ? "☼" : "☾";
 
 toggleButton.addEventListener('click', () => {
-    darkMode = !darkMode;0
+    darkMode = !darkMode;
 
     document.body.classList.toggle('light-mode', !darkMode);
 
