@@ -1,0 +1,11 @@
+{
+    "password_strength" :"Seguridad de la Contraseña",
+    "export_button": "Exportar a .txt",
+    "copy_button": "Copiar",
+    "generate_button": "Generar Contaseña",
+    "password_length": "Longitud",
+    "password_generator": "Generador de Contraseñas",
+    "password_history": "Historial de Contraseñas",
+    "change_theme": "Cambiar tema",
+    "toggle_mode": "Tema día/noche"
+}

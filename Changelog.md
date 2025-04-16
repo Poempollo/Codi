@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.3] - 2025-04-16
+## Added
+- Now languages are loaded following the browser configuration. For now, english and spanish available.
+
 ## [v1.2.2] - 2025-04-16
 ## Added
 - New theme, light mode with soft tones for a more polished and brighter look.

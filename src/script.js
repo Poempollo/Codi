@@ -12,6 +12,9 @@ const appContainer = document.getElementById('app-container');
 const passwordHistoryList = document.getElementById('password-history');
 const exportButton = document.getElementById('export');
 const toggleButton = document.getElementById('toggle-mode');
+const browserLang = navigator.language.slice(0, 2);
+const supportedLangs = ['en', 'es'];
+const currentLang = supportedLangs.includes(browserLang) ? browserLang : 'en';
 const CHARS = {
     uppers: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     lowers: 'abcdefghijklmnopqrstuvwxyz',
@@ -196,3 +199,23 @@ toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('light-mode', !darkMode);
     toggleButton.textContent = darkMode ? "☼" : "☾";
 });
+function loadLanguage(lang) {
+    return fetch(`languages/${lang}.json`).then(res => res.json());
+}
+function updateText(langData) {
+    document.querySelector('h1').textContent = langData.password_generator;
+    document.querySelector('label[for="length"]').textContent = langData.password_length;
+    document.querySelector('#copy').textContent = langData.copy_button;
+    document.querySelector('#generate').textContent = langData.generate_button;
+    document.querySelector('#password-strength').textContent = langData.password_strength;
+    document.querySelector('#export').textContent = langData.export_button;
+    document.querySelector('h5').textContent = langData.password_history;
+    const toggleButton = document.getElementById('toggle-mode');
+    toggleButton.title = langData.toggle_mode;
+}
+function init() {
+    loadLanguage(currentLang).then(langData => {
+        updateText(langData);
+    }).catch(err => console.error('Error loading language:', err));
+}
+init();
