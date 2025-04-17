@@ -17,6 +17,6 @@
         "weak": "Weak",
         "medium": "Medium",
         "strong": "Strong",
-        "very-strong": "Very Strong"
+        "very_strong": "Very Strong"
     }
 }

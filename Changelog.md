@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.3.2] - 2025-04-17
+## Fixed
+- Fixed incorrect display of password strength label "Very Strong".
+
 ## [v1.3.1] - 2025-04-17
 ## Fixed
 - Fixed incorrect display of password strength labels in history when using Spanish.
