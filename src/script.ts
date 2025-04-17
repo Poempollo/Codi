@@ -141,7 +141,7 @@ generateButton.addEventListener('click', () => {
     const strength = calculatePasswordStrength(password);
     updateStrengthDisplay(strength);
 
-    addPasswordToHistory(password, strengthDisplay.textContent?.split(': ')[1] ?? '');
+    addPasswordToHistory(password, strength);
 });
 
 copyButton.addEventListener('click', () => {
@@ -164,12 +164,12 @@ passwordOutput.addEventListener('input', () => {
 
 interface HistoryItem {
     value: string;
-    strength: string;
+    strength: StrengthLevel;
 }
 
 let passwordHistory: HistoryItem[] = [];
 
-function addPasswordToHistory(password: string, strength: string) {
+function addPasswordToHistory(password: string, strength: StrengthLevel) {
     passwordHistory.unshift({value: password, strength});
     if (passwordHistory.length > 10) {
         passwordHistory.pop();
@@ -188,23 +188,23 @@ function renderPasswordHistory() {
         strengthSpan.classList.add('password-strength-label');
 
         switch(item.strength) {
-            case 'Very Strong':
+            case 'very-strong':
                 strengthSpan.textContent = langData.strength_levels.very_strong;
                 strengthSpan.classList.add('strength-very-strong-text');
                 break;
-            case 'Strong':
+            case 'strong':
                 strengthSpan.textContent = langData.strength_levels.strong;
                 strengthSpan.classList.add('strength-strong-text');
                 break;
-            case 'Medium':
+            case 'medium':
                 strengthSpan.textContent = langData.strength_levels.medium;
                 strengthSpan.classList.add('strength-medium-text');
                 break;
-            case 'Weak':
+            case 'weak':
                 strengthSpan.textContent = langData.strength_levels.weak;
                 strengthSpan.classList.add('strength-weak-text');
                 break;
-        }
+        }    
 
         li.appendChild(strengthSpan);
 

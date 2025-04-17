@@ -106,7 +106,6 @@ function updateStrengthDisplay(strength) {
     strengthDisplay.classList.add(`strength-${strength}-text`);
 }
 generateButton.addEventListener('click', () => {
-    var _a, _b;
     const length = parseInt(lengthInput.value);
     const useUpper = uppercaseCheckbox.checked;
     const useLower = lowercaseCheckbox.checked;
@@ -124,7 +123,7 @@ generateButton.addEventListener('click', () => {
     passwordOutput.value = password;
     const strength = calculatePasswordStrength(password);
     updateStrengthDisplay(strength);
-    addPasswordToHistory(password, (_b = (_a = strengthDisplay.textContent) === null || _a === void 0 ? void 0 : _a.split(': ')[1]) !== null && _b !== void 0 ? _b : '');
+    addPasswordToHistory(password, strength);
 });
 copyButton.addEventListener('click', () => {
     navigator.clipboard.writeText(passwordOutput.value)
@@ -158,19 +157,19 @@ function renderPasswordHistory() {
         const strengthSpan = document.createElement('span');
         strengthSpan.classList.add('password-strength-label');
         switch (item.strength) {
-            case 'Very Strong':
+            case 'very-strong':
                 strengthSpan.textContent = langData.strength_levels.very_strong;
                 strengthSpan.classList.add('strength-very-strong-text');
                 break;
-            case 'Strong':
+            case 'strong':
                 strengthSpan.textContent = langData.strength_levels.strong;
                 strengthSpan.classList.add('strength-strong-text');
                 break;
-            case 'Medium':
+            case 'medium':
                 strengthSpan.textContent = langData.strength_levels.medium;
                 strengthSpan.classList.add('strength-medium-text');
                 break;
-            case 'Weak':
+            case 'weak':
                 strengthSpan.textContent = langData.strength_levels.weak;
                 strengthSpan.classList.add('strength-weak-text');
                 break;
