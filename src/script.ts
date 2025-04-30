@@ -34,7 +34,7 @@ const CHARS = {
     symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?',
 } as const;
 
-type StrengthLevel = 'weak' | 'medium' | 'strong' | 'very-strong';
+type StrengthLevel = 'weak' | 'medium' | 'strong' | 'very_strong';
 
 function generatePassword(length: number, useUpper: boolean, useLower: boolean, useNumbers: boolean, useSymbols: boolean): string {
     let availableChars = '';
@@ -106,7 +106,7 @@ function calculatePasswordStrength(password: string): StrengthLevel {
     if (score <= 5) return 'weak';
     if (score <= 9) return 'medium';
     if (score <= 11) return 'strong';
-    return 'very-strong';
+    return 'very_strong';
 }
 
 function updateStrengthDisplay(strength: StrengthLevel): void {
@@ -188,7 +188,7 @@ function renderPasswordHistory() {
         strengthSpan.classList.add('password-strength-label');
 
         switch(item.strength) {
-            case 'very-strong':
+            case 'very_strong':
                 strengthSpan.textContent = langData.strength_levels.very_strong;
                 strengthSpan.classList.add('strength-very-strong-text');
                 break;
@@ -248,8 +248,6 @@ toggleButton.addEventListener('click', () => {
     darkMode = !darkMode;
 
     document.body.classList.toggle('light-mode', !darkMode);
-
-    toggleButton.textContent = darkMode ? "☼" : "☾";
 });
 
 function loadLanguage(lang: string): Promise<any> {

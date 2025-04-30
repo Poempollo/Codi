@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.3.3] - 2025-04-30
+## Fixed
+- Fixed incorrect display of password strength label "Very Strong" again.
+- Deleted some unused and duplicated variables.
+
+
 ## [v1.3.2] - 2025-04-17
 ## Fixed
 - Fixed incorrect display of password strength label "Very Strong".
