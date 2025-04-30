@@ -96,17 +96,18 @@ function calculatePasswordStrength(password) {
         return 'medium';
     if (score <= 11)
         return 'strong';
-    return 'very_strong';
+    return 'very-strong';
 }
 function updateStrengthDisplay(strength) {
-    // Limpiamos las clases anteriores
     appContainer.className = 'password-card p-4';
     strengthDisplay.className = '';
-    // Aplicamos las nuevas clases
-    console.log("Valor strength en updateStrengthDisplay:", strength);
-    console.log("langData.strength_levels:", langData.strength_levels);
-    strengthDisplay.textContent = `${langData.password_strength}: ${langData.strength_levels[strength]}`;
-    // Añadimos las clases de fuerza
+    // Verifica que el valor strength sea válido y existe en langData.strength_levels
+    if (langData.strength_levels[strength]) {
+        strengthDisplay.textContent = `${langData.password_strength}: ${langData.strength_levels[strength]}`;
+    }
+    else {
+        console.error(`Strength level "${strength}" not found in langData.`);
+    }
     appContainer.classList.add(`strength-${strength}-container`);
     strengthDisplay.classList.add(`strength-${strength}-text`);
 }
@@ -162,7 +163,7 @@ function renderPasswordHistory() {
         const strengthSpan = document.createElement('span');
         strengthSpan.classList.add('password-strength-label');
         switch (item.strength) {
-            case 'very_strong':
+            case 'very-strong':
                 strengthSpan.textContent = langData.strength_levels.very_strong;
                 strengthSpan.classList.add('strength-very-strong-text');
                 break;
@@ -210,6 +211,7 @@ toggleButton.textContent = darkMode ? "☼" : "☾";
 toggleButton.addEventListener('click', () => {
     darkMode = !darkMode;
     document.body.classList.toggle('light-mode', !darkMode);
+    toggleButton.textContent = darkMode ? "☼" : "☾";
 });
 function loadLanguage(lang) {
     return fetch(`languages/${lang}.json`).then(res => res.json());
