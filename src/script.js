@@ -96,7 +96,7 @@ function calculatePasswordStrength(password) {
         return 'medium';
     if (score <= 11)
         return 'strong';
-    return 'very-strong';
+    return 'very_strong';
 }
 function updateStrengthDisplay(strength) {
     appContainer.className = 'password-card p-4';
@@ -157,7 +157,7 @@ function renderPasswordHistory() {
         const strengthSpan = document.createElement('span');
         strengthSpan.classList.add('password-strength-label');
         switch (item.strength) {
-            case 'very-strong':
+            case 'very_strong':
                 strengthSpan.textContent = langData.strength_levels.very_strong;
                 strengthSpan.classList.add('strength-very-strong-text');
                 break;
@@ -205,7 +205,6 @@ toggleButton.textContent = darkMode ? "☼" : "☾";
 toggleButton.addEventListener('click', () => {
     darkMode = !darkMode;
     document.body.classList.toggle('light-mode', !darkMode);
-    toggleButton.textContent = darkMode ? "☼" : "☾";
 });
 function loadLanguage(lang) {
     return fetch(`languages/${lang}.json`).then(res => res.json());
