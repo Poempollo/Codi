@@ -1,6 +1,10 @@
 # Changelog
 
-## [v1.3.5] - 2025-04-30
+## [v1.3.7] - 2025-04-30
+## Fixed
+- Last chance.
+
+## [v1.3.6] - 2025-04-30
 ## Fixed
 - Please work.
 

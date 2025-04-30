@@ -17,6 +17,6 @@
         "weak": "Débil",
         "medium": "Media",
         "strong": "Fuerte",
-        "very_strong": "Muy Fuerte"
+        "very-strong": "Muy Fuerte"
     }
 }
