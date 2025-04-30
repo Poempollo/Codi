@@ -112,6 +112,8 @@ function calculatePasswordStrength(password: string): StrengthLevel {
 function updateStrengthDisplay(strength: StrengthLevel): void {
     appContainer.className = 'password-card p-4';
     strengthDisplay.className = '';
+    console.log("Valor strength en updateStrengthDisplay:", strength);
+    console.log("langData.strength_levels:", langData.strength_levels);
     strengthDisplay.textContent = `${langData.password_strength}: ${langData.strength_levels[strength]}`;
 
     appContainer.classList.add(`strength-${strength}-container`);
