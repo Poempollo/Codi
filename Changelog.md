@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.3.5] - 2025-04-30
+## Fixed
+- Now?
+
 ## [v1.3.4] - 2025-04-30
 ## Fixed
 - Now the latest problems should be fixed, and the app working correctly.
